@@ -3,7 +3,7 @@
 [PPT](https://docs.google.com/presentation/d/1WNNDf4HkB0iu8scEAUjaURKUapPLaQ4Z/edit?usp=sharing&ouid=100027038551905707321&rtpof=true&sd=true)
 
 
-[Into Video]()
+[Into Video](https://youtu.be/bJ20EVB_9tw)
 
 
 [testnet demo](https://agent-game-zeta.vercel.app/) 
