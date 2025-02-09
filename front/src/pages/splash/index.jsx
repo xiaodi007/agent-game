@@ -27,6 +27,7 @@ const Splash = () => {
   const [showLoading, setShowLoading] = useState(false);
   const navigate = useNavigate();
   const client = useSuiClient();
+  const account = useCurrentAccount();
 
   let counterPackageId = PACKAGE_ID;
 
@@ -41,6 +42,7 @@ const Splash = () => {
 
   function StartGameBtnWrapper() {
     const account = useCurrentAccount();
+    
 
     if (!account) {
       return null;
@@ -60,8 +62,12 @@ const Splash = () => {
   }
 
  async function handleInitGame() {
+  if (!account) {
+    console.error("No account connected.");
+    return;
+  }
     const txb = new TransactionBlock();
-    // txb.setSender('0x67856930d275218936b720bdcbcb251e735a2c4f1a3800f098bab85426c0fe1b')
+    txb.setSender(account.address) 
     setShowLoading(true);
 
     txb.moveCall({
