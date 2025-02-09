@@ -61,7 +61,7 @@ const Splash = () => {
 
  async function handleInitGame() {
     const txb = new TransactionBlock();
-    txb.setSender('0x67856930d275218936b720bdcbcb251e735a2c4f1a3800f098bab85426c0fe1b')
+    // txb.setSender('0x67856930d275218936b720bdcbcb251e735a2c4f1a3800f098bab85426c0fe1b')
     setShowLoading(true);
 
     txb.moveCall({
