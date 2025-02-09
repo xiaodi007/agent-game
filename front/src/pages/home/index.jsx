@@ -169,21 +169,56 @@ const Home = () => {
     });
   };
   
-  const handleToolClick = async (role, type, indexList) => {
-    if (role !== game?.leader || game?.gameOver) return;
-
+  const handleToolClick = async (role, type, indexList, callBack) => {
+    if (step !== 4 || role !== game?.leader || game?.gameOver) return;
+    const toolType = parseInt(type)
+    const toolIndex = game?.playerItems?.indexOf(toolType) + 1
+    console.log("handleToolClick: ", game.playerItems, type, indexList, toolIndex);
+    
     const [first] = indexList || [];
-
+    const canProcess = validatorCallback(toolType);
+    
     // 使用道具时 触发被动技能
     await handlePassiveSkill(type);
-    game?.makeDecision?.(`c-${first}`);
+    game?.makeDecision?.(`c-${toolIndex}`);
     const tempTools = [...usingTools];
-    console.log("tempTools: ", tempTools, type);
+    console.log("tempTools: ", type);
     tempTools.push(type);
     setUsingTools(tempTools);
+
+    canProcess && callBack()
     // setToolSelectedModalOpen(true);
   };
-
+  const validatorCallback = (item) => {
+    let flag = true
+    const { playerItems, aiItems, playerHealth, maxHealth, useEMP, useEye } = game || {}
+    // const itemList = this.leader === "人类" ? playerItems : aiItems;
+    // const item = playerItems[itemIndex - 1];
+    // console.log('item: ', playerItems, itemIndex, item);
+    
+    switch (parseInt(item)) {
+      case 1:
+        console.log('health: ', playerHealth, maxHealth);
+        
+        if(playerHealth >= maxHealth) {
+          flag = false
+        }
+        break;
+      case 2:
+        if(useEMP) {
+          flag = false
+        }
+        break;
+      case 5:
+        if(useEye) {
+          flag = false
+        }
+        break;
+    }
+    console.log('flag: ', flag);
+    
+    return flag;
+  };
   const errorWrapper = () => {
     return (
       <>
@@ -469,8 +504,8 @@ Ready to play!`,
           <ToolGroup
             data={game}
             items={game?.playerItems || []}
-            onClick={(type, indexList) =>
-              handleToolClick("人类", type, indexList)
+            onClick={(type, indexList, callBack) =>
+              handleToolClick("人类", type, indexList, callBack)
             }
           />
           {!game?.playerItems?.length && <div>No card yet</div>}
