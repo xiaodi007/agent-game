@@ -376,7 +376,7 @@ Ready to play!`,
           }}
         >
           <ToolGroup
-            items={game?.aiItems || []}
+            items={game?.aiItems?.length ? [...game?.aiItems] : []}
             onClick={undefined}
             // onClick={(type, indexList) =>
             //   handleToolClick("人工智能", indexList)
