@@ -1,0 +1,17 @@
+.playerRing {
+  img {
+    // filter: sepia(1);
+    transform: scale(2) skew(3deg, 160deg);
+    animation: lock-animation 2s infinite;
+  }
+
+  @keyframes lock-animation {
+    0%,
+    100% {
+      transform: scale(2) skew(3deg, 160deg);
+    }
+    50% {
+      transform: scale(1.6) skew(3deg, 160deg);
+    }
+  }
+}
