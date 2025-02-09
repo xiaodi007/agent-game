@@ -309,9 +309,9 @@ Ready to play!`,
     <>
       <div className="text-center">
         <div className="mb-6">End Of Turn</div>
-        <div className="text-3xl font-bold mb-40">{localization[game?.leader]} win</div>
-        <div className="text-2xl font-bold mb-20">Game data will be stored on Walrus</div>
-        <div className="text-2xl font-bold mb-20">Walrus blob_id: {game?.conversations_blob_id} </div>
+        <div className="text-3xl font-bold mb-10">{localization[game?.leader]} win</div>
+        <div className="text-2xl font-bold mb-10">Game data will be stored on Walrus</div>
+        <div className="text-2xl font-bold mb-10">Walrus blob_id: {game?.conversations_blob_id} </div>
         <div
           className=" w-[280px] m-auto p-2 text-lg text-[#26b2b9] border-2 border-[#26b2b9] text-center cursor-pointer"
           onClick={() => {

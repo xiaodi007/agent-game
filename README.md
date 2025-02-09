@@ -6,7 +6,7 @@
 [Into Video]()
 
 
-[testnet demo]() 
+[testnet demo](https://agent-game-zeta.vercel.app/) 
 
 
 **Apocalyptic World** is a turn-based card game that combines AI-driven agents and random elements to create a dynamic and immersive experience. Each game is unique, with unpredictable outcomes, strategic depth, and engaging AI interactions.
